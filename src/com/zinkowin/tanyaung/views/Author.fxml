@@ -35,7 +35,6 @@
             </ToolBar>
       		<VBox styleClass="tableview" VBox.vgrow="ALWAYS">
       			<children>
-      			  <Button mnemonicParsing="false" onAction="#pdf" styleClass="btn" text="PDF" />
       				<TableView fx:id="authorTbView" VBox.vgrow="ALWAYS">
       					<columns>
       						<TableColumn fx:id="noCol" maxWidth="1000.0" prefWidth="75.0" text="No">
