@@ -78,51 +78,6 @@ public class AuthorList implements Initializable {
 
 	}
 	
-	@FXML
-	public void pdf() {
-		try (Connection con =ConnectionManager.getConnection()){
-			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select * from author");
-			
-			Document doc = new Document();
-			PdfWriter.getInstance(doc, new FileOutputStream("author.pdf"));
-			doc.open();
-			PdfPTable ptb = new PdfPTable(5);
-			PdfPCell pcell;
-			while(rs.next()) {
-				String no = String.valueOf(rs.getInt("id"));
-				pcell = new PdfPCell(new Phrase(no));
-				ptb.addCell(pcell);
-				
-				String name = rs.getString("name");
-				pcell = new PdfPCell(new Phrase(name));
-				ptb.addCell(pcell);
-				
-				String age = rs.getString("age");
-				pcell = new PdfPCell(new Phrase(age));
-				ptb.addCell(pcell);
-				
-				String country = rs.getString("country");
-				pcell = new PdfPCell(new Phrase(country));
-				ptb.addCell(pcell);
-				
-				String totalbook = rs.getString("totalbook");
-				pcell = new PdfPCell(new Phrase(totalbook));
-				ptb.addCell(pcell);
-				
-			}
-			
-			doc.add(ptb);
-			doc.close();
-			rs.close();
-			stmt.close();
-			con.close();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-
 	public void listener(Author author) {
 		search();
 	}
